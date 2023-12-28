@@ -1,3 +1,13 @@
-{{#boundedContext}}
+version: "3"
 
-{{/boundedContext}}
+services:
+
+{{#boundedContexts}}
+  generate-{{name}}:
+    tty: true
+    env_file:
+      - .env
+    image: ghcr.io/jinyoung/gpt-engineer:v1
+    volumes:
+      - ../{{name}}:/project
+{{/boundedContexts}}
