@@ -7,7 +7,7 @@ services:
     tty: true
     env_file:
       - .env
-    image: ghcr.io/jinyoung/gpt-engineer:v1
+    image: ghcr.io/jinyoung/gpt-engineer:latest
     volumes:
       - ../{{name}}:/project
 {{/boundedContexts}}
