@@ -1,14 +1,15 @@
-아래의 이벤트스토밍 모델을 구현한 코드를 생성해줘:
+Please implement for this Event Storming Model:
 
 {{{contexts.json}}}
 
 
 
 
-구현 아키텍처와 사용기술은 아래와 같아:
+I want to utilize following techniques:
 
 - clean architecture
 - spring-boot3
+- spring-data-rest
 - JPA (must use package jakarta.persistence.* instead of javax.persistence.*)
 - H2 DB
 - Lombok
