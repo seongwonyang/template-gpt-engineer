@@ -8,7 +8,7 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     image: ghcr.io/jinyoung/gpt-engineer:v5
-    command: ["-sh"]
+#    command: ["-sh"]
     volumes:
       - ../{{name}}:/project
 {{/boundedContexts}}
