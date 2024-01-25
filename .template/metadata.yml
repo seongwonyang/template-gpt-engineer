@@ -2,6 +2,7 @@ name: GPT Engineer for Spring Boot
 rating: 5
 imageUrl: https://avatars.githubusercontent.com/u/153750385?s=200&v=4
 description: Let the GPT engineer (AI) generates the clean code in Spring Boot 3
+testModel: testmodel
 tags:
   - Java
   - Spring boot
