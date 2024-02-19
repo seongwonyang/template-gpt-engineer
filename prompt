@@ -20,7 +20,7 @@ SELF-CRITICISM:
  - when you create pom.xml, USE parent project to spring boot 3.1.4
  - when you create pom.xml, DO NOT missing data-rest dependency
  - when you create pom.xml, you MUST specify the 2022.0.3 for the spring-cloud, 4.0.4 for the spring-cloud-streams version in properties
- - Also, in pom.xml, use 'mall' as the groupId of the project and 'delivery' as the artifactId.
+ - Also, in pom.xml, use '{{{options.rootPackage}}}' as the groupId of the project and '{{{name}}}' as the artifactId.
  - Please generate start from pom.xml
 
  - You must create application.yml and must adhere to the following rules:
@@ -29,8 +29,8 @@ SELF-CRITICISM:
   - set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' attribute.
   - 'Ordered' should be routed to the 'wheneverOrdered_StartDelivery function', 'OrderCancelled' should be routed to the 'wheneverOrderCancelled_CancelDelivery' function, and in other cases, it should be routed to the 'discardFunction'.
   - Message binding settings has :
-  - Consumer configuration: Through the functionRouter-in-0 binding, it belongs to the delivery group and receives messages from the mallbasic destination. set contentType to application/json.
-  - Producer configuration: Sends messages to the mallbasic destination via the producer-out-0 binding. set contentType to application/json.
+  - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the delivery group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
+  - Producer configuration: Sends messages to the '{{{options.rootPackage}}}' destination via the 'producer-out-0' binding. set contentType to application/json.
 
 You must create main application to run the application.
 Kafka Consumer Beans should not be created in @Configuration Config file, but should be created within Service class while leveraging domain events.
