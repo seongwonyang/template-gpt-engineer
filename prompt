@@ -1,3 +1,8 @@
+forEach: BoundedContext
+fileName: prompt
+path: {{name}}
+---
+
 Please implement for this Event Storming Model:
 
 {{{contexts.json}}}
@@ -28,6 +33,9 @@ SELF-CRITICISM:
   - configure to use local Kafka (kafka.binder.brokers: localhost:9092)  
   - set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' attribute.
   - 'Ordered' should be routed to the 'wheneverOrdered_StartDelivery function', 'OrderCancelled' should be routed to the 'wheneverOrderCancelled_CancelDelivery' function, and in other cases, it should be routed to the 'discardFunction'.
+  {{#aggregates}}
+  - aaa
+  {{/aggregates}}
   - Message binding settings has :
   - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the delivery group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
   - Producer configuration: Sends messages to the '{{{options.rootPackage}}}' destination via the 'producer-out-0' binding. set contentType to application/json.
