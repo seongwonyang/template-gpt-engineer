@@ -23,18 +23,17 @@ SELF-CRITICISM:
  - Also, in pom.xml, use '{{{options.rootPackage}}}' as the groupId of the project and '{{{name}}}' as the artifactId.
  - Please generate start from pom.xml
 
- - You must create application.yml and must adhere to the following rules:
-  - activate default profile
-  - configure to use local Kafka (kafka.binder.brokers: localhost:9092)  
-  - set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' attribute.
-  - 'Ordered' should be routed to the 'wheneverOrdered_StartDelivery function', 'OrderCancelled' should be routed to the 'wheneverOrderCancelled_CancelDelivery' function, and in other cases, it should be routed to the 'discardFunction'.
-  - Message binding settings has :
+ - When you create application.yml, You need to activate 'default' profiles: (spring.config.activate.on-profile: default)
+ - Configure to use local Kafka (spring.cloud.stream.kafka.binder.brokers: localhost:9092)  
+ - Set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' YAML attribute. 
+ - {{#aggregates}}{{#policyList}}{{#incomingEventRefs}}'{{value.namePascalCase}}' should be routed to the 'whenever{{value.namePascalCase}}_{{../namePascalCase}}' function,{{/incomingEventRefs}}{{/policyList}}{{/aggregates}} and in other cases, it should be routed to the 'discardFunction'.
+ - Message binding settings has :
   - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the delivery group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
   - Producer configuration: Sends messages to the '{{{options.rootPackage}}}' destination via the 'producer-out-0' binding. set contentType to application/json.
 
-You must create main application to run the application.
-Kafka Consumer Beans should not be created in @Configuration Config file, but should be created within Service class while leveraging domain events.
-when you create execution shell (run.sh), please add '--no-transfer-progress' option not to output transfer progress if there's mvn command:
+ - You must create main application to run the application.
+ - Kafka Consumer Beans should not be created in @Configuration Config file, but should be created Service class while leveraging domain events.
+ - When you create execution shell (run.sh), please add '--no-transfer-progress' option not to output transfer progress if there's mvn command:
 
 ```
 mvn [command] --no-transfer-progress
