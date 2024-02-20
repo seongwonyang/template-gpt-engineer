@@ -36,7 +36,8 @@ SELF-CRITICISM:
   {{#aggregates}}
     {{#events}}
       {{#outgoingPolicyRefs}}
-        {{value.name}}
+        {{#incomingEventRefs}}{{value.namePascalCase}}{{/incomingEventRefs}}
+        {{value.namePascalCase}}
       {{/outgoingPolicyRefs}}
     {{/events}}
   {{/aggregates}}
