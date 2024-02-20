@@ -34,7 +34,11 @@ SELF-CRITICISM:
   - set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' attribute.
   - 'Ordered' should be routed to the 'wheneverOrdered_StartDelivery function', 'OrderCancelled' should be routed to the 'wheneverOrderCancelled_CancelDelivery' function, and in other cases, it should be routed to the 'discardFunction'.
   {{#aggregates}}
-  - aaa
+    {{#events}}
+      {{#outgoingPolicyRefs}}
+        {{value.name}}
+      {{/outgoingPolicyRefs}}
+    {{/events}}
   {{/aggregates}}
   - Message binding settings has :
   - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the delivery group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
