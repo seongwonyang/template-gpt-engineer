@@ -35,10 +35,10 @@ SELF-CRITICISM:
   - 'Ordered' should be routed to the 'wheneverOrdered_StartDelivery function', 'OrderCancelled' should be routed to the 'wheneverOrderCancelled_CancelDelivery' function, and in other cases, it should be routed to the 'discardFunction'.
   {{#aggregates}}
     {{#events}}
-      {{#outgoingPolicyRefs}}
+      {{#outgoingPolicyRefs.value}}
         {{#incomingEventRefs}}{{value.namePascalCase}}{{/incomingEventRefs}}
-        {{value.name}}
-      {{/outgoingPolicyRefs}}
+        {{name}}
+      {{/outgoingPolicyRefs.value}}
     {{/events}}
   {{/aggregates}}
   - Message binding settings has :
