@@ -32,8 +32,9 @@ SELF-CRITICISM:
   - Producer configuration: Sends messages to the '{{{options.rootPackage}}}' destination via the 'producer-out-0' binding. set contentType to application/json.
 
  - You must create main application to run the application.
- - Kafka Consumer Beans should not be created in @Configuration Config file, but should be created Service class while leveraging domain events.
+ - Kafka Consumer Beans should not be created in @Configuration Config file, but should be created in a Service class that leverages domain events with an appropriate Repository and StreamBridge.
  - When you create execution shell (run.sh), please add '--no-transfer-progress' option not to output transfer progress if there's mvn command:
+
 
 ```
 mvn [command] --no-transfer-progress
