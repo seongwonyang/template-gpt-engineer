@@ -28,7 +28,7 @@ SELF-CRITICISM:
  - Set up rules to route to different functions based on the 'type' of the message header in 'spring.cloud.function.routing-expression' YAML attribute. 
  - {{#aggregates}}{{#policyList}}{{#incomingEventRefs}}'{{value.namePascalCase}}' should be routed to the 'whenever{{value.namePascalCase}}_{{../namePascalCase}}' function,{{/incomingEventRefs}}{{/policyList}}{{/aggregates}} and in other cases, it should be routed to the 'discardFunction'.
  - Message binding settings has :
- - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the delivery group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
+ - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the {{{name}}} group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
  - Producer configuration: Sends messages to the '{{{options.rootPackage}}}' destination via the 'producer-out-0' binding. set contentType to application/json.
 
  - You must create main application to run the application.
