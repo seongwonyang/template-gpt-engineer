@@ -25,7 +25,7 @@ SELF-CRITICISM:
 
  - When you create application.yml, You need to activate 'default' profiles: (spring.config.activate.on-profile: default)
  - Configure to use local Kafka (spring.cloud.stream.kafka.binder.brokers: localhost:9092)  
- - Set up rules to route to different functions based on the 'type' of the message header, and must be defined as the value of 'spring.cloud.function.routing-expression' key in application.yml.   
+ - Set up rules to route to different functions based on the 'type' of the message header. These must be defined as the value of the 'spring.cloud.function.routing-expression' key in 'application.yml'. If they're generated as 'spring.cloud.stream', they should be created under the 'cloud' in the same position as the 'stream' and 'function'. not under the 'stream' in 'function'. 
  - The routing rule is: {{#aggregates}}{{#policyList}}{{#incomingEventRefs}}'{{value.namePascalCase}}' should be routed to the 'whenever{{value.namePascalCase}}_{{../namePascalCase}}' function,{{/incomingEventRefs}}{{/policyList}}{{/aggregates}} and in other cases, it should be routed to the 'discardFunction'.
  - Message binding settings has :
  - Consumer configuration: Through the 'functionRouter-in-0' binding, it belongs to the {{{name}}} group and receives messages from the '{{{options.rootPackage}}}' destination. set contentType to application/json.
